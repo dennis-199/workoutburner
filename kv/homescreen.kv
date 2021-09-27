@@ -1,0 +1,49 @@
+#: import utils kivy.utils
+<HomeScreen>:
+    FloatLayout:
+        canvas:
+            Color:
+                rgb: utils.get_color_from_hex("#091212")
+            Rectangle:
+                size: self.size
+                pos: self.pos
+
+        Label:
+            #streak label
+            pos_hint:{"top": 1, "left": 1}
+            size_hint: 1, .1
+            text: ""
+            id: streak_label
+        ScrollView:
+            pos_hint:{"top": .9, "left": 1}
+            size_hint: 1, .75
+            GridLayout:
+                #banner grid
+                id: banner_grid
+                cols: 1
+                spacing: 10,10
+                size_hint_y: None
+                height: self.minimum_height
+                row_default_height: '100dp'
+                row_force_default: True
+
+        GridLayout:
+            #add 3 new buttons
+            rows: 1
+            pos_hint:{"top": .2, "left": 1}
+            size_hint: 1, .15
+            ImageButton:
+                source: "icons/payment-method.png"
+                on_release:
+                    print("This the amount tou will pay")
+            ImageButton:
+                source: "icons/driver.png"
+                on_release:
+                    print("are you a driver")
+            ImageButton:
+                source: "icons/settings.png"
+                on_release:
+                    app.change_screen("settings_screen")
+
+
+
